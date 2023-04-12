@@ -39,7 +39,32 @@ jobs:
           distribution: 'temurin'
           java-version: '8'
           cache: 'maven'
-          
+
+      - uses: s4u/maven-settings-action@v2.6.0
+        with:
+          servers: |
+            [{
+                "id": "anypoint-exchange-v3",
+                "username": "${{ secrets.ANYPOINT_USERNAME }}",
+                "password": "${{ secrets.ANYPOINT_PASSWORD }}"
+            },
+            {
+                "id": "cloudhub-deploy",
+                "username": "${{ secrets.ANYPOINT_USERNAME }}",
+                "password": "${{ secrets.ANYPOINT_PASSWORD }}"
+            },
+            {
+              "id": "anypoint-exchange-v3-student-deployment",
+              "username": "${{ secrets.ANYPOINT_USERNAME }}",
+              "password": "${{ secrets.ANYPOINT_PASSWORD }}"
+            },
+            {
+                "id": "releases-ee",
+                "username": "${{ secrets.RELEASES_USERNAME }}",
+                "password": "${{ secrets.RELEASES_PASSWORD }}"
+            }
+            ]
+
       # maven build command, could add other flags if needed
       - name: Build
         run: mvn -B clean package --file check-in-papi-app/pom.xml
