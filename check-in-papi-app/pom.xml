@@ -60,7 +60,7 @@
 							<server>cloudhub-deploy</server>							
 							<!-- reads credentials from settings.xml -->
 							
-							<applicationName>checkin-auto</applicationName>
+							<applicationName>checkin-auto-prod</applicationName>
 							<replicas>1</replicas>
 							<vCores>0.1</vCores>
 							<deploymentTimeout>240000</deploymentTimeout>
